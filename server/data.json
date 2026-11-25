@@ -1,0 +1,96 @@
+{
+  "version": "3",
+  "users": {
+    "1488358817": {
+      "role_id": 335523328,
+      "name": "dz",
+      "password": {
+        "salt": "9a760a1118292cab56bf2df060f50808",
+        "hash": "0a36af0e3e4c29593613414983bdc10ca855309c428c6f939b4ae86b29f4b283",
+        "iterations": 600000
+      },
+      "client_unique_id": "dz"
+    }
+  },
+  "hosts": {
+    "993541640": {
+      "owner": 1488358817,
+      "address": "10.244.175.75",
+      "http_port": 47989,
+      "pair_info": {
+        "client_private_key": "-----BEGIN PRIVATE KEY-----\r\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDB1wOFO5DJBc4t\r\notBlfrD7eVpa/CAw40ltQ3htP/QsC6Y5wqcuRlDCE4VNalrXnzmPRK2WPProWpN3\r\n9UfL0FaGFXuj7Vkgo6vnSNtrcoaUpSGNNWZHAI40mdj3bpFCqPqzYhcUdYjMMsL7\r\ntPGOz9Ctr5Rb4Oxr1bGxopmCrPr6GxooHDgoFWYjv4SEhxm9m5gJRIwA6luuLUui\r\nNxnQcm/Jz6SIX1S2VRkHDCaH4N34B6FxdE6o03zAorfmLSROdrhjhgi6a8ainvF3\r\nKs8n8I22aIkzv6f9KxJNJ9ITJug1Ra73+8fVm26JS+1KI+37C8kfTiyNL07ObymE\r\n0NKSLMQ3AgMBAAECggEAOQHNLT/JYvVsH4vEkjTiQ/L6mcuQhBA0JggzwJ2QZ+u9\r\nJTuUA032rj0jdRMUSFmxier+yjKA8BjDSgI+7TgGWkSzKhDBp5G7GrgYn878uXaf\r\nGXJc9AC70ch1QL+pxNsBcAQnGYM/ih5brb8XU5LWol4C2cqafVRJgB572yyYWzld\r\n5EP4KInkzDiK8DSV6AgQDKkea+YAT6mIuZ7SRHyMe+yFVYDijyzKxoqscvpwmvwx\r\n3WdpyYQfRRMgEOHhVp3rFWzDTk1n4nhiRpa9Npf0S8Hto2XF2WYu1jKIQZbAGwRc\r\nemrelMuAH9l4/738AQw60WYPMD0ub02XcMq0dnll0QKBgQDO+8wQt6ThdjMBuzpj\r\nsIQ5XwBWw471L1OHuAl92UaU/FkBgdjXcmCqRK1Q8N5kiXdF07Re2iWEIjF7PSWC\r\nqKoJWjYWeQtYrlPGz7l+4YQdZTPxKoFXbmL+j/bVNw0CPkvCbsediMMaFJy5rl2u\r\n4WU2kpwi19Fs7fMrkoggfmLAuwKBgQDvvmRWWFGGzTIY5CLKjPISjH+5YitlW5NI\r\n/IpEVtGF8zKrLi7Ti6JFHYUS4Ni4h5p3szJcH8gSy594YG4qqN1DihkU0/Lt1hzv\r\nUrc08wXV7e6GfG8YwdZx++sC6jGEnBf5kZSG9fqPHk18pOZCg2ZlGmCwttKmZJ1f\r\nl3VwlKeAtQKBgBJ/fFhOIUUpDBvugKRiJR7/d4dJiOAur5dkgiymG2G7P7UbxqZS\r\niYMOCjM+o5F2m5s49Vi4xDuP1r4907lem3ukfUr63GG7iq8s51YIj4cVAVRfSRno\r\nOp6nfRbHCbmWmayxu9M/YrhU+UC67ZJwgFwlNCEFCqlihqXxPYsx4F97AoGAGi9b\r\nWirvTJ/g1uMkAad/URNTZ/YW800bOx+KIoiw/cZgRF4Y8zYPFSlyPWudgBoffu9t\r\nkq5N9e+TjVxK7BHhiNzufF3h7KQ0KNeJ9xiMDJ+eK8YvhC63s19mfb0Ch49c9v81\r\nj8ASC8utfu2r0Jv1dRl6chKl01Kt9aDfTNqPqPkCgYEAhCdBQLeR/aE97fbMbkRj\r\nWuVDRoOUjgozY0F7aG8H5LQIec/GPiDbLrGs10kcnfOf0JzAhXS4C9uNNzhm46kt\r\n1cMck0CBaLDJ7l+JJbLoc9gtdkRUQLA3645DtCAs3IGdwxSGk+oACeLxodhTVuqq\r\npsI9EXYeOSfn0Gx3wp0XYgU=\r\n-----END PRIVATE KEY-----\r\n",
+        "client_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDezCCAmOgAwIBAgIBATANBgkqhkiG9w0BAQsFADBfMRQwEgYDVQQDDAtleGFt\r\ncGxlLmNvbTEVMBMGA1UECgwMRXhhbXBsZSBDb3JwMRYwFAYDVQQHDA1TYW4gRnJh\r\nbmNpc2NvMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwHhcNMjYxMTA2MDUxNTEy\r\nWhcNMjcxMTA2MDUxNTEyWjBfMRQwEgYDVQQDDAtleGFtcGxlLmNvbTEVMBMGA1UE\r\nCgwMRXhhbXBsZSBDb3JwMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQI\r\nDAJDQTELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\r\nAQDB1wOFO5DJBc4totBlfrD7eVpa/CAw40ltQ3htP/QsC6Y5wqcuRlDCE4VNalrX\r\nnzmPRK2WPProWpN39UfL0FaGFXuj7Vkgo6vnSNtrcoaUpSGNNWZHAI40mdj3bpFC\r\nqPqzYhcUdYjMMsL7tPGOz9Ctr5Rb4Oxr1bGxopmCrPr6GxooHDgoFWYjv4SEhxm9\r\nm5gJRIwA6luuLUuiNxnQcm/Jz6SIX1S2VRkHDCaH4N34B6FxdE6o03zAorfmLSRO\r\ndrhjhgi6a8ainvF3Ks8n8I22aIkzv6f9KxJNJ9ITJug1Ra73+8fVm26JS+1KI+37\r\nC8kfTiyNL07ObymE0NKSLMQ3AgMBAAGjQjBAMB0GA1UdDgQWBBS7aiq27/ObdnKJ\r\nLyUuxtefKIUWQzAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjANBgkq\r\nhkiG9w0BAQsFAAOCAQEAN8tH3vxZ2Rl0wMzBwN6sAY9sywOu0Y4fhpvyIFIhzrvU\r\n4kevZnJEqhL7NpWzwdKuD/OuenkAksO3mVgbAzUj9zunsiB/OvDUPrGNSBuonvqK\r\ne2/hqOIcyNr+3GAE5/hfM8JsXSFIjbMglpkMaoJasSEovN9Um+QCyKQfYHVb9vD0\r\nPhVa/PDBJfkP2iAwcIJyjGW0NKpyZPxxGKO5B77aQU0c5M87QooKKSlTyOrqbj4e\r\nuWckeMsuxDM5DuiuK3jiPn27GGcy/yn8Rbvl2ET2LFA+ZM8kyh3BjWcr+XHIPFX4\r\npU1f/A7b1xOsq1ov8dPpjakN6NJdwRC00aZUGQj+vA==\r\n-----END CERTIFICATE-----\r\n",
+        "server_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIC0jCCAbqgAwIBAgIUA8znShYRFRXayhUCdDjBmVggm/cwDQYJKoZIhvcNAQEL\r\nBQAwIzEhMB8GA1UEAwwYU3Vuc2hpbmUgR2FtZXN0cmVhbSBIb3N0MB4XDTI2MTEw\r\nNDAwMjgwNloXDTQ2MTAzMDAwMjgwNlowIzEhMB8GA1UEAwwYU3Vuc2hpbmUgR2Ft\r\nZXN0cmVhbSBIb3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs2Yo\r\nfRUxcUgAjOCAgNbuqbx0MwtVpSPKeP5KbzC5xXEnxOrHXrOs+fHfkeKLV8ZUlVs0\r\nnx7r/v7FUTgvlMIr7Hna6QJXxYBa3IHFdfzlTA5a51CvZ2IzAUmOWKKo/FxVr99Z\r\nIK8rPmzYRujs/RibhzyygtTlPBrnemLoMqOY9oeJpB5XHqQSmnHKv6rVNw2w+gRG\r\n/W/A8C5VRGhRUfaVc0DyOzXdn+MZEHtgxNfqZHd/gArRPqcH6ye1C8czASrwfeDX\r\nEOWe+22omaCNzlDPi3/ToNqSIEA7s040uR07YYTb60C9EdV85TbPVkgZUakcAya3\r\n3vhrR0IOnEAzH5aIaQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBkJvoNwQc+DjDo\r\nV4L/ImjUyXMtBjpg6+aH9mzqFFqHEOVy7fjt1qLKTlXFySjpKGxOHKseLZIfuNA2\r\nO/LItfddXIAkZrkG0O3z+9oDdQ78ZPg+RtaSBQQe+Woi4Ashx+sqYcdqic0QRNpo\r\nhjgRaa6iU0nd56ylJZwlAIK5xUgq+JXGH0vxmsqQQtYczMVbO1yZ11a1NuHodRON\r\nk0Kzbb7c7rD+5/bi9EiqWQWJH/LdzsfWTsBuIh2JmfPgkOXpzg+sBH3QR4dhlM25\r\nzE9lxGUztg5h/4oPTxM9WBIHYR4Xi+I426WXbfuDTtkpN8MC22Ri1zZhJObpOI7T\r\n3Dl9tlp3\r\n-----END CERTIFICATE-----\r\n"
+      },
+      "cache": {
+        "name": "DESKTOP-I0ELD9L",
+        "mac": "36:4C:E4:1E:C5:53"
+      }
+    },
+    "3193794891": {
+      "owner": 1488358817,
+      "address": "10.147.19.186",
+      "http_port": 47989,
+      "pair_info": null,
+      "cache": {
+        "name": "Fusion 02",
+        "mac": "C6:04:2E:E8:8B:00"
+      }
+    }
+  },
+  "stable_host_ids": {
+    "\"36:4C:E4:1E:C5:53\"": 993541640,
+    "\"C6:04:2E:E8:8B:00\"": 3193794891
+  },
+  "roles": {
+    "335523328": {
+      "name": "Admin",
+      "ty": "Admin",
+      "default_settings": {
+        "bitrate": 7100,
+        "canvasRenderer": false,
+        "canvasVsync": false,
+        "controllerConfig": {
+          "invertAB": false,
+          "invertXY": false,
+          "sendIntervalOverride": null
+        },
+        "dataTransport": "auto",
+        "enterFullscreenOnStreamStart": true,
+        "forceVideoElementRenderer": false,
+        "fps": 60,
+        "hdr": false,
+        "hideSidebarButton": false,
+        "language": "pt-BR",
+        "localCursorSensitivity": 2.1,
+        "microphone": true,
+        "mouseMode": "follow",
+        "mouseScrollMode": "highres",
+        "pageStyle": "moonlight",
+        "playAudioLocal": true,
+        "sidebarEdge": "left",
+        "toggleFullscreenWithKeybind": true,
+        "touchMode": "mouseRelative",
+        "useSelectElementPolyfill": false,
+        "videoCodec": "h264",
+        "videoSize": "720p",
+        "videoSizeCustom": {
+          "height": 1080,
+          "width": 1920
+        }
+      },
+      "permissions": {
+        "allow_add_hosts": true,
+        "maximum_bitrate_kbps": null,
+        "allow_codec_h264": true,
+        "allow_codec_h265": true,
+        "allow_codec_av1": true,
+        "allow_hdr": true,
+        "allow_transport_webrtc": true,
+        "allow_transport_websockets": true
+      }
+    }
+  },
+  "default_role_id": null,
+  "default_user_id": null
+}

@@ -1,0 +1,10 @@
+# Rust build output
+/target
+
+# Logs gerados em tempo de execucao
+/logs
+*.log
+
+# Binario compilado no destino (Linux) / Windows
+/web-server
+/web-server.exe

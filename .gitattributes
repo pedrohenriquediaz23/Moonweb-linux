@@ -1,0 +1,4 @@
+# Normaliza finais de linha
+* text=auto
+# Scripts de shell precisam SEMPRE de LF no Linux
+*.sh text eol=lf

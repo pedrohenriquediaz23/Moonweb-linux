@@ -1,0 +1,23 @@
+
+{
+  "webrtc": {
+    "ice_servers": [
+      {
+        "urls": [
+          "stun:stun.l.google.com:19302",
+          "stun:stun1.l.google.com:3478"
+        ],
+        "username": "",
+        "credential": ""
+      },
+      {
+        "urls": [
+          "turn:turn.fusioncloud.online:3478?transport=udp",
+          "turn:turn.fusioncloud.online:3478?transport=tcp"
+        ],
+        "username": "moonlight",
+        "credential": "b6983a7a19b41a61db0c3c5cc5ca90e5eae0b3511e9d9b36"
+      }
+    ]
+  }
+}
