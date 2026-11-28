@@ -267,13 +267,22 @@ impl Default for MoonlightConfig {
 }
 
 impl MoonlightConfig {
-    /// Returns the pin api to use for `host_id`: the first host specific
-    /// [AutoPairHostConfig] that matches, otherwise the global
+    /// Returns the pin api to use for a host: the first host specific
+    /// [AutoPairHostConfig] that matches (by id or by name), otherwise the global
     /// [MoonlightConfig::auto_pair].
-    pub fn auto_pair_for(&self, host_id: u32) -> Option<&AutoPairConfig> {
+    ///
+    /// Matching by name keeps working when the host id changes (for example after
+    /// a new version of the host regenerated its random mac address).
+    pub fn auto_pair_for(&self, host_id: u32, host_name: &str) -> Option<&AutoPairConfig> {
         self.auto_pair_hosts
             .iter()
-            .find(|entry| entry.host_ids.contains(&host_id))
+            .find(|entry| {
+                entry.host_ids.contains(&host_id)
+                    || entry
+                        .host_names
+                        .iter()
+                        .any(|name| name.eq_ignore_ascii_case(host_name))
+            })
             .map(|entry| &entry.config)
             .or(self.auto_pair.as_ref())
     }
@@ -294,11 +303,16 @@ pub struct AutoPairConfig {
     pub device_name: Option<String>,
 }
 
-/// A pin api used only for specific host ids, overriding [MoonlightConfig::auto_pair].
+/// A pin api used only for specific hosts, overriding [MoonlightConfig::auto_pair].
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AutoPairHostConfig {
     /// Host ids this configuration applies to.
+    #[serde(default)]
     pub host_ids: Vec<u32>,
+    /// Host names this configuration applies to (case insensitive). Preferred over
+    /// [AutoPairHostConfig::host_ids] because the name survives a host id change.
+    #[serde(default)]
+    pub host_names: Vec<String>,
     #[serde(flatten)]
     pub config: AutoPairConfig,
 }

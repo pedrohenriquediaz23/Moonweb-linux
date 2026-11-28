@@ -154,6 +154,7 @@ async fn pair_host(
     let host_id = HostId(request.host_id);
 
     let mut host = user.host(host_id).await?;
+    let host_name = host.undetailed_host_cached(&mut user).await?.name;
 
     let pin = PairPin::new_random(&RustCryptoBackend)?;
 
@@ -162,7 +163,7 @@ async fn pair_host(
     if let Some(auto_pair) = app
         .config()
         .moonlight
-        .auto_pair_for(request.host_id)
+        .auto_pair_for(request.host_id, &host_name)
         .cloned()
     {
         let pin_str = pin.to_string();

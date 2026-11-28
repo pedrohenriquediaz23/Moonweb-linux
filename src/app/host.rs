@@ -450,9 +450,16 @@ impl Host {
 
         let pin = PairPin::new_random(&RustCryptoBackend)?;
 
+        let host_name = self.storage_host(&app).await?.cache.name;
+
         // Forward the pin to the Sunshine web api, exactly like the manual pairing
         // endpoint does, so the host releases itself.
-        if let Some(auto_pair) = app.config.moonlight.auto_pair_for(self.id.0).cloned() {
+        if let Some(auto_pair) = app
+            .config
+            .moonlight
+            .auto_pair_for(self.id.0, &host_name)
+            .cloned()
+        {
             let pin_str = pin.to_string();
             let device_name = app.config.moonlight.pair_device_name.clone();
 

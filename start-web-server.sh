@@ -47,11 +47,14 @@ export SUNSHINE_PIN_API_URL="https://pin.fusioncloud.online"
 export SUNSHINE_PIN_API_USERNAME="Fusion"
 export SUNSHINE_PIN_API_PASSWORD="Fusion"
 
-# ---- PIN API secundaria: usada SOMENTE pelos host ids abaixo (Fusion 02) ----
+# ---- PIN API secundaria: usada SOMENTE pelas maquinas abaixo (Fusion 02) ----
 # Para essas maquinas o PIN vai para esta API em vez da de cima.
+# O match por NOME (SUNSHINE_PIN_API_HOST_NAMES) e preferido porque sobrevive
+# quando o host id muda (ex.: nova versao do host regenera o mac aleatorio).
 export SUNSHINE_PIN_API_URL_2="https://pinos.grupofusioncloud.site"
 export SUNSHINE_PIN_API_USERNAME_2="dz"
 export SUNSHINE_PIN_API_PASSWORD_2="dz"
+export SUNSHINE_PIN_API_HOST_NAMES="Fusion 02"
 export SUNSHINE_PIN_API_HOST_IDS="2250422749"
 
 log() { printf '%s\n' "$*"; }
@@ -103,6 +106,7 @@ Environment=SUNSHINE_PIN_API_PASSWORD=$SUNSHINE_PIN_API_PASSWORD
 Environment=SUNSHINE_PIN_API_URL_2=$SUNSHINE_PIN_API_URL_2
 Environment=SUNSHINE_PIN_API_USERNAME_2=$SUNSHINE_PIN_API_USERNAME_2
 Environment=SUNSHINE_PIN_API_PASSWORD_2=$SUNSHINE_PIN_API_PASSWORD_2
+Environment=SUNSHINE_PIN_API_HOST_NAMES=$SUNSHINE_PIN_API_HOST_NAMES
 Environment=SUNSHINE_PIN_API_HOST_IDS=$SUNSHINE_PIN_API_HOST_IDS
 ExecStart="$BIN"
 Restart=on-failure

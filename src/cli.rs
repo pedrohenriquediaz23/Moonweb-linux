@@ -135,6 +135,10 @@ pub struct CliConfig {
     /// Host ids (comma separated) the secondary pin api applies to.
     #[arg(long, env = "SUNSHINE_PIN_API_HOST_IDS")]
     pub sunshine_pin_api_host_ids: Option<String>,
+    /// Host names (comma separated) the secondary pin api applies to. Preferred over
+    /// `SUNSHINE_PIN_API_HOST_IDS` because the name survives a host id change.
+    #[arg(long, env = "SUNSHINE_PIN_API_HOST_NAMES")]
+    pub sunshine_pin_api_host_names: Option<String>,
     /// Disables the STUN ice server which are bundled by default.
     /// This only disables the generation of them in the first config.
     /// After the config.json has been generated the ice servers in the config will be used regardless if this is set.
@@ -217,6 +221,7 @@ impl CliConfig {
         if let Some(api_url) = self.sunshine_pin_api_url_2 {
             config.moonlight.auto_pair_hosts.push(AutoPairHostConfig {
                 host_ids: parse_host_ids(self.sunshine_pin_api_host_ids.as_deref()),
+                host_names: parse_host_names(self.sunshine_pin_api_host_names.as_deref()),
                 config: AutoPairConfig {
                     api_url,
                     username: self.sunshine_pin_api_username_2.unwrap_or_default(),
@@ -241,5 +246,16 @@ fn parse_host_ids(value: Option<&str>) -> Vec<u32> {
         .unwrap_or_default()
         .split(',')
         .filter_map(|entry| entry.trim().parse().ok())
+        .collect()
+}
+
+/// Parses a comma separated list of host names, ignoring blank entries.
+fn parse_host_names(value: Option<&str>) -> Vec<String> {
+    value
+        .unwrap_or_default()
+        .split(',')
+        .map(|entry| entry.trim())
+        .filter(|entry| !entry.is_empty())
+        .map(str::to_string)
         .collect()
 }
