@@ -249,6 +249,10 @@ pub struct MoonlightConfig {
     /// instead of having to be typed in manually.
     #[serde(default)]
     pub auto_pair: Option<AutoPairConfig>,
+    /// Pin api overrides for specific hosts. When the host id matches an entry
+    /// here, that entry is used instead of [MoonlightConfig::auto_pair].
+    #[serde(default)]
+    pub auto_pair_hosts: Vec<AutoPairHostConfig>,
 }
 
 impl Default for MoonlightConfig {
@@ -257,7 +261,21 @@ impl Default for MoonlightConfig {
             default_http_port: default_moonlight_http_port(),
             pair_device_name: default_pair_device_name(),
             auto_pair: None,
+            auto_pair_hosts: Vec::new(),
         }
+    }
+}
+
+impl MoonlightConfig {
+    /// Returns the pin api to use for `host_id`: the first host specific
+    /// [AutoPairHostConfig] that matches, otherwise the global
+    /// [MoonlightConfig::auto_pair].
+    pub fn auto_pair_for(&self, host_id: u32) -> Option<&AutoPairConfig> {
+        self.auto_pair_hosts
+            .iter()
+            .find(|entry| entry.host_ids.contains(&host_id))
+            .map(|entry| &entry.config)
+            .or(self.auto_pair.as_ref())
     }
 }
 
@@ -274,6 +292,15 @@ pub struct AutoPairConfig {
     /// Device name submitted together with the pin. Defaults to [MoonlightConfig::pair_device_name].
     #[serde(default)]
     pub device_name: Option<String>,
+}
+
+/// A pin api used only for specific host ids, overriding [MoonlightConfig::auto_pair].
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AutoPairHostConfig {
+    /// Host ids this configuration applies to.
+    pub host_ids: Vec<u32>,
+    #[serde(flatten)]
+    pub config: AutoPairConfig,
 }
 
 fn default_moonlight_http_port() -> u16 {

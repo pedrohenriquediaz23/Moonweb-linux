@@ -54,6 +54,13 @@ set "SUNSHINE_PIN_API_URL=https://pin.fusioncloud.online"
 set "SUNSHINE_PIN_API_USERNAME=Fusion"
 set "SUNSHINE_PIN_API_PASSWORD=Fusion"
 
+REM ---- PIN API secundaria: usada SOMENTE pelos host ids abaixo (Fusion 02) ----
+REM Para essas maquinas o PIN vai para esta API em vez da de cima.
+set "SUNSHINE_PIN_API_URL_2=https://pinos.grupofusioncloud.site"
+set "SUNSHINE_PIN_API_USERNAME_2=dz"
+set "SUNSHINE_PIN_API_PASSWORD_2=dz"
+set "SUNSHINE_PIN_API_HOST_IDS=2250422749"
+
 if not exist "logs" mkdir "logs"
 
 REM ---- Roda o servidor em segundo plano com stdout + stderr no mesmo arquivo ----

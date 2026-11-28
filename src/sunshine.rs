@@ -27,25 +27,26 @@ enum Outcome {
 /// happens right after this is called, so a couple of retries are required.
 pub async fn auto_submit_pin(config: &AutoPairConfig, pin: &str, device_name: &str) {
     let device_name = config.device_name.as_deref().unwrap_or(device_name);
+    let api_url = config.api_url.trim_end_matches('/');
 
     for attempt in 1..=ATTEMPTS {
         tokio::time::sleep(ATTEMPT_INTERVAL).await;
 
         match submit_pin(config, pin, device_name).await {
             Ok(Outcome::Accepted) => {
-                info!("auto-pair: Sunshine released the host for pin {pin}");
+                info!("auto-pair: {api_url} released the host for pin {pin}");
                 return;
             }
             Ok(Outcome::Pending) => {
-                debug!("auto-pair: no pending pair session on Sunshine yet (attempt {attempt})");
+                debug!("auto-pair: no pending pair session on {api_url} yet (attempt {attempt})");
             }
             Err(err) => {
-                warn!("auto-pair: failed to submit pin to Sunshine: {err}");
+                warn!("auto-pair: failed to submit pin to {api_url}: {err}");
             }
         }
     }
 
-    warn!("auto-pair: gave up submitting pin {pin} after {ATTEMPTS} attempts");
+    warn!("auto-pair: gave up submitting pin {pin} to {api_url} after {ATTEMPTS} attempts");
 }
 
 async fn submit_pin(

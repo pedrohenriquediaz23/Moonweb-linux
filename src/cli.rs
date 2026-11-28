@@ -6,7 +6,7 @@ use std::{
 use crate::{
     api::bindings::RtcIceServer,
     config::{
-        AutoPairConfig, Config, ConfigSsl, ForwardedHeaders, PortRange,
+        AutoPairConfig, AutoPairHostConfig, Config, ConfigSsl, ForwardedHeaders, PortRange,
         WebRtcNat1To1IceCandidateType, WebRtcNat1To1Mapping,
     },
 };
@@ -122,6 +122,19 @@ pub struct CliConfig {
     /// Basic auth password used to submit the pairing pin to the Sunshine pin api.
     #[arg(long, env = "SUNSHINE_PIN_API_PASSWORD")]
     pub sunshine_pin_api_password: Option<String>,
+    /// Secondary pin api base url, used only for the host ids listed in
+    /// `SUNSHINE_PIN_API_HOST_IDS`. Overrides `SUNSHINE_PIN_API_URL` for those hosts.
+    #[arg(long, env = "SUNSHINE_PIN_API_URL_2")]
+    pub sunshine_pin_api_url_2: Option<String>,
+    /// Basic auth username used to submit the pairing pin to the secondary pin api.
+    #[arg(long, env = "SUNSHINE_PIN_API_USERNAME_2")]
+    pub sunshine_pin_api_username_2: Option<String>,
+    /// Basic auth password used to submit the pairing pin to the secondary pin api.
+    #[arg(long, env = "SUNSHINE_PIN_API_PASSWORD_2")]
+    pub sunshine_pin_api_password_2: Option<String>,
+    /// Host ids (comma separated) the secondary pin api applies to.
+    #[arg(long, env = "SUNSHINE_PIN_API_HOST_IDS")]
+    pub sunshine_pin_api_host_ids: Option<String>,
     /// Disables the STUN ice server which are bundled by default.
     /// This only disables the generation of them in the first config.
     /// After the config.json has been generated the ice servers in the config will be used regardless if this is set.
@@ -201,6 +214,17 @@ impl CliConfig {
                 device_name: None,
             });
         }
+        if let Some(api_url) = self.sunshine_pin_api_url_2 {
+            config.moonlight.auto_pair_hosts.push(AutoPairHostConfig {
+                host_ids: parse_host_ids(self.sunshine_pin_api_host_ids.as_deref()),
+                config: AutoPairConfig {
+                    api_url,
+                    username: self.sunshine_pin_api_username_2.unwrap_or_default(),
+                    password: self.sunshine_pin_api_password_2.unwrap_or_default(),
+                    device_name: None,
+                },
+            });
+        }
         if self.disable_default_webrtc_ice_servers {
             config
                 .webrtc
@@ -209,4 +233,13 @@ impl CliConfig {
         }
         config.webrtc.ice_servers.extend(self.webrtc_ice_servers);
     }
+}
+
+/// Parses a comma separated list of host ids, ignoring blank/invalid entries.
+fn parse_host_ids(value: Option<&str>) -> Vec<u32> {
+    value
+        .unwrap_or_default()
+        .split(',')
+        .filter_map(|entry| entry.trim().parse().ok())
+        .collect()
 }

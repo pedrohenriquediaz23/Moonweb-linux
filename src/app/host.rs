@@ -452,7 +452,7 @@ impl Host {
 
         // Forward the pin to the Sunshine web api, exactly like the manual pairing
         // endpoint does, so the host releases itself.
-        if let Some(auto_pair) = app.config.moonlight.auto_pair.clone() {
+        if let Some(auto_pair) = app.config.moonlight.auto_pair_for(self.id.0).cloned() {
             let pin_str = pin.to_string();
             let device_name = app.config.moonlight.pair_device_name.clone();
 

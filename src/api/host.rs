@@ -159,7 +159,12 @@ async fn pair_host(
 
     // Release the host automatically by forwarding the pin to the Sunshine web api,
     // so the user never has to type in the pairing code.
-    if let Some(auto_pair) = app.config().moonlight.auto_pair.clone() {
+    if let Some(auto_pair) = app
+        .config()
+        .moonlight
+        .auto_pair_for(request.host_id)
+        .cloned()
+    {
         let pin_str = pin.to_string();
         let device_name = app.config().moonlight.pair_device_name.clone();
 
